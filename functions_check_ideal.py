@@ -96,3 +96,5 @@ for step in range(7):
     ba = ba_val.values()
     result = pd.DataFrame([number, ba], index=['Number', 'BA']).T
     result.to_csv('FILES_CHECK/CHEBML244_check_{}.csv'.format(step))
+
+# нужно сделать с ppv
