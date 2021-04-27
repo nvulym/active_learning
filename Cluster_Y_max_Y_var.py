@@ -114,7 +114,6 @@ X_test = [x for x in other_training_set]
 Y_test = [j for i, j in enumerate(kmeans.labels_) if i not in random_numbers]
 model = RandomForestClassifier(n_estimators=500, max_features='log2', random_state=1, n_jobs=-1).fit(
                 X_train, Y_train)
-
 model.score(X_test, Y_test)  # 0.9093959731543624
 
 
@@ -152,17 +151,14 @@ df_Y_var = pd.DataFrame(X_var)
 df_Y_var.columns = ['x', 'y']
 df_Y_var['method'] = 'Y_VAR'
 
-
 # Concat dataframes
-
 df = pd.concat([df_Y_max, df_Y_var])
 # Show plot
 fig, ax = plt.subplots(figsize= (15, 10))
 markers = {'Y_VAR': 's', "Y_MAX": 'X'}
 sns.scatterplot(data=df_1, x="x", y="y",color='green', s = 50, ax=ax)
 sns.scatterplot(data=df_2, x="x", y="y", color='yellow', s = 50, ax=ax)
-sns.regplot(data=df_coord, x="x", y="y", order=4.9, truncate=True, ci=None, scatter=False, ax=ax)  
-# order = 1 (прямая) => order - ...
+sns.regplot(data=df_coord, x="x", y="y", order=4.9, truncate=True, ci=None, scatter=False, ax=ax)
 sns.scatterplot(data=centers, x="x", y="y", color='red', s = 90, marker = 'v', ax=ax)
 sns.scatterplot(data=df, x="x", y="y", palette = ['blue', 'orange'], hue = 'method', markers = markers,style='method', s = 50, 
                 alpha =0.8, ax=ax)
